@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Music Player</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Blurred background -->
+  <div class="overlay"></div>
+
+  <div class="player">
+    <header class="top-bar">
+      <p class="top-small">PLAYING FROM SEARCH</p>
+      <p class="top-source" id="topSource">"sunflower" in Search</p>
+    </header>
+
+    <main class="main-section">
+
+      <!-- Album art -->
+      <img id="trackImage" class="cover" src="sunflower.jpg" alt="Album art" />
+
+      <!-- Song text -->
+      <div class="track-meta">
+        <h2 id="trackTitle" class="track-title">Sunflower</h2>
+        <p id="trackArtist" class="track-artist">Post Malone, Swae Lee</p>
+      </div>
+
+      <!-- Audio -->
+      <audio id="audioPlayer"></audio>
+
+      <!-- Progress -->
+      <div class="progress-row">
+        <span id="currentTime" class="time-text">0:00</span>
+        <input type="range" id="progressBar" class="progress-bar" value="0" />
+        <span id="totalTime" class="time-text">0:00</span>
+      </div>
+
+      <!-- ACTIONS ROW: like + add to playlist + share -->
+      <div class="actions-row">
+        <!-- Like button -->
+        <button id="likeBtn" class="action-btn" type="button">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.1 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 3.99 4 6.5 4c1.54 0 3.04.81 3.9 2.09C11.46 4.81 12.96 4 14.5 4 17.01 4 19 6 19 8.5c0 3.78-3.4 6.86-8.65 11.54l-1.25 1.31z"/>
+          </svg>
+        </button>
+
+        <!-- Add to playlist button -->
+        <button id="addBtn" class="action-btn" type="button">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3 6h14v2H3V6zm0 4h14v2H3v-2zm0 4h8v2H3v-2zm13 0v-3h2v3h3v2h-3v3h-2v-3h-3v-2h3z"/>
+          </svg>
+        </button>
+
+        <!-- Share button -->
+        <button id="shareBtn" class="action-btn" type="button">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 16.08a2.99 2.99 0 0 0-2.11.9L8.91 12.7c.06-.23.09-.46.09-.7s-.03-.47-.09-.7l6.96-4.11A3 3 0 1 0 14 5a3 3 0 0 0 .11.79L7.15 9.9A3 3 0 1 0 8 13c0-.24-.03-.47-.09-.7l6.98 4.12A3 3 0 1 0 18 16.08z"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- PLAYBACK CONTROLS (Spotify style) -->
+      <div class="spotify-controls">
+
+        <!-- Shuffle -->
+        <button id="shuffleBtn" class="ctl shuffle" type="button">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17 3h4v4h-2V5h-2V3zm2 10h2v6h-4v-2h2v-4zM3 4.27l1.28-1.27 17 17-1.27 1.27-2.43-2.42A4.5 4.5 0 0 1 15 19H9a5 5 0 0 1-4.27-2.32l1.49-1.49A3 3 0 0 0 9 17h6c.67 0 1.27-.22 1.77-.59L3 4.27zm3.11 2.32A5 5 0 0 1 9 5h6a3 3 0 0 1 2.25 1.02l-1.44 1.44A1 1 0 0 0 15 7H9a3 3 0 0 0-2.89 2.22L6.11 6.59z"/>
+          </svg>
+        </button>
+
+        <!-- Previous -->
+        <button class="ctl" type="button" onclick="prevTrack()">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="#ffffff">
+            <path d="M18 6L9.5 12 18 18V6zM6 6h2v12H6z"/>
+          </svg>
+        </button>
+
+        <!-- Play / Pause -->
+        <button id="playPauseBtn" class="play-circle" type="button" onclick="togglePlayPause()">
+          <svg id="playIcon" width="44" height="44" viewBox="0 0 24 24" fill="black">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </button>
+
+        <!-- Next -->
+        <button class="ctl" type="button" onclick="nextTrack()">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="#ffffff">
+            <path d="M6 18l8.5-6L6 6v12zm9-12h2v12h-2z"/>
+          </svg>
+        </button>
+
+        <!-- Timer (visual only) -->
+        <button class="ctl" type="button">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="#ffffff">
+            <path d="M12 8v5l3 3-.7.7L11 13.5V8h1zm0-6A10 10 0 1 0 22 12 10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/>
+          </svg>
+        </button>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

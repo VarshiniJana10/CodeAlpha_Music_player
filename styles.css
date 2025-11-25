@@ -1,0 +1,252 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Page background */
+body {
+  min-height: 100vh;
+  font-family: "Poppins", system-ui, sans-serif;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: #000;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Blurred gradient behind everything */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(45px);
+  transform: scale(1.25);
+  z-index: -2;
+}
+
+/* Dark fade near bottom */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 20%, transparent);
+  z-index: -1;
+}
+
+/* Main container */
+.player {
+  width: 100%;
+  max-width: 480px;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Top bar */
+.top-small {
+  font-size: 11px;
+  opacity: 0.85;
+  letter-spacing: 1.5px;
+}
+
+.top-source {
+  font-size: 13px;
+  opacity: 0.9;
+  margin-bottom: 16px;
+}
+
+/* Album cover */
+.cover {
+  width: 90%;
+  max-width: 320px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 22px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.65);
+  margin: 0 auto 20px;
+}
+
+/* Track info */
+.track-title {
+  font-size: clamp(20px, 5vw, 26px);
+  font-weight: 600;
+}
+
+.track-artist {
+  font-size: clamp(13px, 3.5vw, 15px);
+  opacity: 0.8;
+  margin-top: 6px;
+}
+
+/* Progress row */
+.progress-row {
+  width: 90%;
+  max-width: 340px;
+  margin: 18px auto 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress-bar {
+  flex: 1;
+  accent-color: #1db954;
+  height: 4px;
+}
+
+.time-text {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* ACTIONS ROW (like / add / share) */
+.actions-row {
+  width: 90%;
+  max-width: 260px;
+  margin: 6px auto 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.action-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  opacity: 0.9;
+  transition: 0.2s ease;
+}
+
+.action-btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* liked heart green */
+.action-btn.liked {
+  color: #1db954;
+}
+
+/* Control bar */
+.spotify-controls {
+  width: 100%;
+  max-width: 360px;
+  margin: 18px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 6px;
+}
+
+/* Small icon buttons */
+.ctl {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: 0.2s ease;
+}
+
+.ctl:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Shuffle active (green) */
+.shuffle.active svg {
+  fill: #1db954 !important;
+}
+
+/* Big play circle */
+.play-circle {
+  width: clamp(70px, 20vw, 95px);
+  height: clamp(70px, 20vw, 95px);
+  background: #ffffff;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+  transition: 0.25s ease;
+}
+
+.play-circle:hover {
+  transform: scale(1.07);
+}
+
+.play-circle:active {
+  transform: scale(0.93);
+}
+
+/* Responsive tweaks */
+
+/* Small phones */
+@media (max-width: 380px) {
+  .player {
+    padding: 12px;
+  }
+
+  .cover {
+    width: 88%;
+    max-width: 260px;
+  }
+
+  .spotify-controls {
+    max-width: 300px;
+  }
+
+  .ctl svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .progress-row {
+    gap: 6px;
+  }
+
+  .actions-row {
+    max-width: 220px;
+  }
+}
+
+/* Extra small */
+@media (max-width: 330px) {
+  .cover {
+    max-width: 230px;
+  }
+
+  .spotify-controls {
+    max-width: 270px;
+  }
+
+  .play-circle {
+    width: 65px;
+    height: 65px;
+  }
+}
+
+/* Tablets */
+@media (min-width: 600px) {
+  .player {
+    padding-top: 40px;
+  }
+
+  .cover {
+    max-width: 340px;
+  }
+
+  .spotify-controls {
+    max-width: 380px;
+  }
+
+  .actions-row {
+    max-width: 280px;
+  }
+}
